@@ -30,7 +30,7 @@ Trained a Machine Learning model capable of classifying and solve the LendingClu
 
 From the exploratory data analsis I found out that the target (loan_status) expected behavior since there is more loans fully paid than loans charged off, the target balance from the training data was:
 
-![Target Balance](https://raw.githubusercontent.com/liamarguedas/data/main/Data-Science/Lending-Club-Loan/Summary-Charts/Target%20Balance.png)
+![Target Balance](https://raw.githubusercontent.com/liamarguedas/lendingclub-loan/main/Summary-Charts/Target%20Balance.png)
 
 Unfortunately the dataset had very few features that described those charged off loans with precision, so the unbalanced was unfixable so it was not worth implementing SMOTE. 
 
@@ -38,7 +38,7 @@ From the feature engineering I tried to create features that could describe whet
 
 The original data correlation look like:
 
-![Target Correlation](https://raw.githubusercontent.com/liamarguedas/data/main/Data-Science/Lending-Club-Loan/Summary-Charts/Target%20Correlation.png)
+![Target Correlation](https://raw.githubusercontent.com/liamarguedas/lendingclub-loan/main/Summary-Charts/Target%20Correlation.png)
 
 There was some features that could describe the data and from the feature importance It was noticeable that they were important to the model. Since it was an unbalanced target I needed to be careful with what metrics to focus on, since accuracy would not be a perfect metric for the problem. So for this problem the best metrics to focus on were Precision and Recall.
 
@@ -74,11 +74,11 @@ With that on mind I decided to trained 4 different models and see the performanc
 
 I trained a model using cross validation with 5 folds and this are the results I got:
 
-![Models Performance](https://raw.githubusercontent.com/liamarguedas/data/main/Data-Science/Lending-Club-Loan/Summary-Charts/Model%20K-Fold%20Performance.png)
+![Models Performance](https://raw.githubusercontent.com/liamarguedas/lendingclub-loan/main/Summary-Charts/Model%20K-Fold%20Performance.png)
 
 In order to take a decision I group the models and calculated the mean and median with the Precision and Recall metrics to analise performance. 
 
-![Group Performance](https://raw.githubusercontent.com/liamarguedas/data/main/Data-Science/Lending-Club-Loan/Summary-Charts/Model%20Performance%20Mean-Median.png)
+![Group Performance](https://raw.githubusercontent.com/liamarguedas/lendingclub-loan/main/Summary-Charts/Model%20Performance%20Mean-Median.png)
 
 ## Final Decision
 
@@ -106,21 +106,21 @@ Since the improvment was no that big from Gradient Boost to Keras NN and taking 
 
 With the model selected I performed a cross validation one more time just to capture some metrics to analise and make conclusions, the performance of Gradient Boost was:
 
-![Gradient Boost Performance](https://raw.githubusercontent.com/liamarguedas/data/main/Data-Science/Lending-Club-Loan/Summary-Charts/Gradient%20Boost%20K-Fold%20Performance.png)
+![Gradient Boost Performance](https://raw.githubusercontent.com/liamarguedas/lendingclub-loan/main/Summary-Charts/Gradient%20Boost%20K-Fold%20Performance.png)
 
 I built a classification report from the last fold in order to see how it managed to predict each target.
 
-![Classification report](https://raw.githubusercontent.com/liamarguedas/data/main/Data-Science/Lending-Club-Loan/Summary-Charts/Classification%20Report.png)
+![Classification report](https://raw.githubusercontent.com/liamarguedas/lendingclub-loan/main/Summary-Charts/Classification%20Report.png)
 
 As seen from the report, even the best performance model did not managed to get a better recall metric for the 1 (Charged Off) class. In order to see the results, I created a confusion matrix.
 
-![Confusion Matrix](https://raw.githubusercontent.com/liamarguedas/data/main/Data-Science/Lending-Club-Loan/Summary-Charts/Confusion%20Matrix.png)
+![Confusion Matrix](https://raw.githubusercontent.com/liamarguedas/lendingclub-loan/main/Summary-Charts/Confusion%20Matrix.png)
 
 As seen from the confusion matrix the model predicted many Charged Off loans as Fully paid (Actually it predicted more wrong that it did right) so of course the data was not describing with precision the Charged Off loans. 
 
 I trainned a model with the entire dataset in order to give a first hand solution and analise each feature importance to the model, the results were:
 
-![Feature Importance](https://raw.githubusercontent.com/liamarguedas/data/main/Data-Science/Lending-Club-Loan/Summary-Charts/Feature%20Importance.png)
+![Feature Importance](https://raw.githubusercontent.com/liamarguedas/lendingclub-loan/main/Summary-Charts/Feature%20Importance.png)
 
 In the graph we can see that almost the entire dataset had little to none importance to the model and the few feature that had importance were the ones I feature engineered from the data. Then a questions arises, Does deleting these features are gonna improve models performance? 
 
